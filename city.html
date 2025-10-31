@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гусь-Железный - исторический посёлок</title>
+    <link rel="stylesheet" href="" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+        }
+        
+        body {
+            background-color: #f8f5f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('') no-repeat center center/cover;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #8d6e63;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #6d4c41;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        nav {
+            background-color: #5d4037;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0;
+        }
+        
+        nav ul li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            transition: background 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: #4e342e;
+        }
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: #5d4037;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: #8d6e63;
+            margin: 15px auto;
+        }
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        .attractions {
+            background-color: #efebe9;
+        }
+        
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .attraction-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .attraction-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .attraction-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .attraction-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .attraction-card:hover .attraction-img img {
+            transform: scale(1.1);
+        }
+        
+        .attraction-info {
+            padding: 20px;
+        }
+        
+        .attraction-info h3 {
+            margin-bottom: 10px;
+            color: #5d4037;
+        }
+        .cathedral {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .cathedral-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cathedral h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cathedral p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .history {
+            background-color: #d7ccc8;
+        }
+        
+        .history-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .history-text {
+            flex: 1;
+        }
+        
+        .history-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .history-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .contact-item {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-item i {
+            font-size: 2rem;
+            color: #8d6e63;
+            margin-bottom: 15px;
+        }
+        
+        .contact-item h3 {
+            margin-bottom: 10px;
+            color: #5d4037;
+        }
+        footer {
+            background-color: #5d4037;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #d7ccc8;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        @media (max-width: 768px) {
+            .about-content, .history-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">Гусь-Железный</h1>
+        <p class="tagline">Исторический посёлок с богатым промышленным прошлым. Уникальное место на стыке Рязанской и Владимирской областей.</p>
+        <a href="#about" class="btn">Узнать больше</a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#about">О посёлке</a></li>
+            <li><a href="#attractions">Достопримечательности</a></li>
+            <li><a href="#cathedral">Троицкий собор</a></li>
+            <li><a href="#history">История Баташевых</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">О посёлке</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Гусь-Железный — посёлок в Касимовском районе Рязанской области, расположенный на реке Гусь. Это уникальное место с богатой историей, связанной с развитием металлургии в России.</p>
+                        <p>Посёлок был основан в XVIII веке братьями Баташевыми, которые построили здесь чугунолитейный и железоделательный завод. Название "Гусь-Железный" отражает географическое положение на реке Гусь и основное производство — железо.</p>
+                        <p>Сегодня Гусь-Железный привлекает туристов своей уникальной архитектурой, сохранившимися памятниками промышленной истории и величественным Троицким собором.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="C:\Users\Public\Pictures\gusj.jpg" alt="Гусь-Железный">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="attractions" class="attractions">
+            <div class="container">
+                <h2 class="section-title">Достопримечательности</h2>
+                <div class="attractions-grid">
+                    <div class="attraction-card">
+                        <div class="attraction-img">
+                            <img src="C:\Users\Public\Pictures\sob.jpg" alt="Троицкий собор">
+                        </div>
+                        <div class="attraction-info">
+                            <h3>Троицкий собор</h3>
+                            <p>Величественный храм в стиле псевдоготики, построенный в XIX веке. Один из самых необычных православных храмов России.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="attraction-card">
+                        <div class="attraction-img">
+                            <img src="C:\Users\Public\Pictures\us.jpg" alt="Усадьба Баташевых">
+                        </div>
+                        <div class="attraction-info">
+                            <h3>Усадьба Баташевых</h3>
+                            <p>Сохранившиеся постройки усадебного комплекса промышленников Баташевых, основателей посёлка.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="attraction-card">
+                        <div class="attraction-img">
+                            <img src="C:\Users\Public\Pictures\zav.jpg" alt="Старый завод">
+                        </div>
+                        <div class="attraction-info">
+                            <h3>Промышленные памятники</h3>
+                            <p>Сохранившиеся сооружения Гусевского металлургического завода - свидетели промышленной истории посёлка.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="cathedral" class="cathedral">
+            <div class="container">
+                <div class="cathedral-content">
+                    <h2>Троицкий собор</h2>
+                    <p>Троицкий собор в Гусь-Железном — уникальный памятник архитектуры, построенный в 1813-1868 годах в редком для православных храмов стиле псевдоготики. Храм поражает своими размерами и необычным внешним видом.</p>
+                    <p>Собор был построен на средства промышленников Баташевых и является одним из самых крупных сельских храмов в России. Его высота составляет 50 метров, а архитектура сочетает элементы классицизма и готики.</p>
+                    <a href="#contact" class="btn">Как посетить</a>
+                </div>
+            </div>
+        </section>
+        <section id="history" class="history">
+            <div class="container">
+                <h2 class="section-title">История Баташевых</h2>
+                <div class="history-content">
+                    <div class="history-text">
+                        <p>Братья Андрей и Иван Баташевы — основатели промышленного производства в Гусь-Железном. В середине XVIII века они построили здесь чугунолитейный и железоделательный завод, который стал одним из крупнейших в России.</p>
+                        <p>Баташевы были не только талантливыми промышленниками, но и меценатами. Они строили храмы, школы, больницы для рабочих. Их усадьба в Гусь-Железном была настоящим дворцом с парком и прудами.</p>
+                        <p>С именем Баташевых связано множество легенд, в том числе о подземных ходах, соединявших их усадьбу с заводом, и о скрытых сокровищах.</p>
+                    </div>
+                    <div class="history-image">
+                        <img src="C:\Users\Public\Pictures\bat.jpg" alt="Баташевы">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Контакты</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i>📍</i>
+                        <h3>Адрес</h3>
+                        <p>Рязанская область,<br>Касимовский район,<br>п. Гусь-Железный</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i>📞</i>
+                        <h3>Телефон</h3>
+                        <p>-------------</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i>✉️</i>
+                        <h3>Email</h3>
+                        <p>-------------</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Гусь-Железный</div>
+                <div class="social-links">
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; Титов А.В.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
